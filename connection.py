@@ -4,31 +4,31 @@ import fdb
 #Conexões Oracle
 def dbamv():
     dsn = cx_Oracle.makedsn(
-        '10.10.1.200',
-        '1521',
-        service_name = 'prdmv'
+        'ip',
+        'porta',
+        service_name = 'nome'
     )
     conn = cx_Oracle.connect(
-        user = 'dbamv',
-        password = 'adlo895020',
+        user = 'nome_banco',
+        password = 'pass',
         dsn = dsn
     )
     return conn.cursor()
 
 def mvintegra():
     dsn = cx_Oracle.makedsn(
-        '10.10.1.200',
-        '1521',
-        service_name = 'prdmv'
+        'ip_database',
+        'porta',
+        service_name = 'nome'
     )
     conn = cx_Oracle.connect(
-        user = 'mvintegra',
-        password = 'dbamv',
+        user = 'nomedatabase',
+        password = 'senha',
         dsn = dsn
     )
     return conn  
 
 #Conexão com firebird
 def sysdba():
-    conn = fdb.connect(host="10.10.1.94",database="/opt/firebird/sisinthucf.fdb", user="SYSDBA", password="masterkey")
+    conn = fdb.connect(host="banco",database="database", user="user", password="pass")
     return conn
